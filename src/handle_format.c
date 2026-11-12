@@ -12,26 +12,37 @@
 
 #include "../include/ft_printf.h"
 
+int	handle_non_spec(char spec)
+{
+	int	count;
+
+	count = print_char('%');
+	count += print_char(spec);
+	return (count);
+}
+
 int	handle_format(char spec, va_list args)
 {
 	int	ret;
 
 	ret = 0;
 	if (spec == 'c')
-		ret = (print_char(va_arg(args, int)));
+		ret = print_char(va_arg(args, int));
 	else if (spec == 's')
-		ret = (print_str(va_arg(args, char *)));
+		ret = print_str(va_arg(args, char *));
 	else if (spec == 'd' || spec == 'i')
-		ret = (print_nbr(va_arg(args, int)));
+		ret = print_nbr(va_arg(args, int));
 	else if (spec == 'x')
-		ret = (print_hexa(va_arg(args, unsigned int), 2));
+		ret = print_hexa(va_arg(args, unsigned int), 2);
 	else if (spec == 'u')
-		ret = (print_unsigned(va_arg(args, unsigned int)));
+		ret = print_unsigned(va_arg(args, unsigned int));
 	else if (spec == 'X')
-		ret = (print_hexa(va_arg(args, unsigned int), 1));
+		ret = print_hexa(va_arg(args, unsigned int), 1);
 	else if (spec == 'p')
-		ret = (print_ptr(va_arg(args, void *)));
+		ret = print_ptr(va_arg(args, void *));
 	else if (spec == '%')
-		ret = (print_char('%'));
+		ret = print_char('%');
+	else
+		ret = handle_non_spec(spec);
 	return (ret);
 }
