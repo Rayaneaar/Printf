@@ -6,11 +6,11 @@
 /*   By: raaribou <raaribou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 18:05:36 by raaribou          #+#    #+#             */
-/*   Updated: 2026/11/07 17:17:00 by raaribou         ###   ########.fr       */
+/*   Updated: 2026/11/07 12:03:24 by raaribou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../include/ft_printf.h"
 
 int	get_printed_numbers(int nbr)
 {
@@ -31,6 +31,7 @@ int	get_printed_numbers(int nbr)
 	}
 	return (printed);
 }
+
 int	print_nbr(int nbr)
 {
 	long	n;
@@ -42,11 +43,16 @@ int	print_nbr(int nbr)
 	printed = get_printed_numbers(n);
 	if (n < 0)
 	{
-		print_char('-');
+		if (print_char('-') == -1)
+			return (-1);
 		n = -n;
 	}
 	if (n >= 10)
-		print_nbr(n / 10);
-	print_char(n % 10 + '0');
+	{
+		if (print_nbr(n / 10) == -1)
+			return (-1);
+	}
+	if (print_char(n % 10 + '0') == -1)
+		return (-1);
 	return (printed);
 }

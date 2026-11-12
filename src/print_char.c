@@ -9,10 +9,11 @@
 /*   Updated: 2026/11/07 18:21:39 by raaribou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/ft_printf.h"
+#include "../include/ft_printf.h"
 
 int	print_char(char c)
 {
-	write(1, &c, 1);
+	if (write(1, &c, 1) == -1)
+		return (-1);
 	return (1);
 }

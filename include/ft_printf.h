@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: raaribou <raaribou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/04 22:49:17 by raaribou          #+#    #+#             */
-/*   Updated: 2026/11/04 22:50:58 by raaribou         ###   ########.fr       */
+/*   Created: 2026/11/10 15:17:15 by raaribou          #+#    #+#             */
+/*   Updated: 2026/11/10 15:17:15 by raaribou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-size_t	ft_strlen(char *c)
-{
-	size_t	i;
+# include <stdarg.h>
+# include <unistd.h>
 
-	i = 0;
-	while (c[i])
-		i++;
-	return (i);
-}
+int		ft_printf(const char *s, ...);
+int		print_char(char c);
+int		print_nbr(int n);
+int		print_str(char *s);
+int		handle_format(char spec, va_list args);
+int		print_hexa(unsigned int n, int type);
+int		print_unsigned(unsigned int n);
+int		print_ptr(void *ptr);
+
+#endif
