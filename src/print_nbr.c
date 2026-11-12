@@ -35,11 +35,9 @@ int	get_printed_numbers(int nbr)
 int	print_nbr(int nbr)
 {
 	long	n;
-	int		sign;
 	int		printed;
 
 	n = nbr;
-	sign = 1;
 	printed = get_printed_numbers(n);
 	if (n < 0)
 	{
